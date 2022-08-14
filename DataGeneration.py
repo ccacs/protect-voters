@@ -3,20 +3,20 @@ from Structures import *
 # Generate the data
 
 
-n = 25  # number of voters
-m = 2  # number of candidates (without the attacker's preference candidate)
+n = 35  # number of voters
+m = 4  # number of candidates (without the attacker's preference candidate)
 pntg = .80  # percentage of votes attacker candidate(m+1) get
-lwt = 1  # lower bound of weight
-uwt = 3  # upper bound of weight
+lwt = 10  # lower bound of weight
+uwt = 100  # upper bound of weight
 lvac = 10  # lower bound of weight
 uvac = 100  # upper bound of weight
 lvdc = 10  # lower bound of weight
 uvdc = 100  # upper bound of weight
-sd = random.randint(0, 25)  # seed
+sd = random.randint(0, 2500)  # seed
 random.seed(sd)
 
 
-def data_gen():
+def data_gen(prob):
     cndt = []
     for i in range(m + 1):
         cndt.append(Candidate(i))
@@ -46,6 +46,20 @@ def data_gen():
 
     national = Election(vtr, cndt)
     national.stats()
+    if prob == "DPP":
+        wnr, mcast = national.winner()
+        cndt.remove(wnr)
+        national2 = Election(vtr, cndt)
+        wnr2, mcast2 = national2.winner()
+        cndt = [wnr, wnr2]
+
+        updated_voter_list = []
+        for i in vtr:
+            if i.vfc == wnr.cid or i.vfc == wnr2.cid:
+                updated_voter_list.append(i)
+
+        vtr = updated_voter_list
+
     atkr = Attacker(vtr, cndt)
     dfndr = Defender(vtr, cndt)
 

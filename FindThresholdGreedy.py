@@ -24,11 +24,12 @@ def get_threshold(cndt, atkr, dfndr):
         ab = [atkr.find_min_cost(i, already_spent, distc + 1)]
         # print(ab)
         k = 0
+        protected_vtr_weight = []
         for j in ranked_vtr:
 
             if av >= 0:
                 j.x = 1
-
+                protected_vtr_weight.append(j.wt)
                 av = av - j.wt
                 print(
                     "Defender defends voter {} to protect candidate {} and it total worth is {} votes. def cost is {} and "
@@ -48,8 +49,9 @@ def get_threshold(cndt, atkr, dfndr):
         if mindb < threshold:
             threshold = mindb
         print("threshold value is {}".format(threshold))
+        print("Total weight of protected voter is {}".format(sum(ab[:minab_index])))
 
-    return threshold
+    return sum(ab[:minab_index]), threshold
 
     # plt.plot(db, ab)
 # plt.show()

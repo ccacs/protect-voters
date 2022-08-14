@@ -19,8 +19,8 @@ class Voter:
     def __init__(self, vid, wt, vfc, vac, vdc, x=0, y=0):
         self.vid = vid  # voter id
         self.vfc = vfc  # voter favorite candidate
-        self.vac = vac * wt  # voter attacking cost
-        self.vdc = vdc * wt  # voter defending cost
+        self.vac = vac  # * wt // 10  # voter attacking cost
+        self.vdc = vdc  # * wt // 10  # voter defending cost
         self.wt = wt  # voter weight
         self.x = x
         self.y = y
@@ -55,7 +55,7 @@ class Election:
         mcast = 0
         wnr = -1
 
-        for i in cndt:
+        for i in self.cndt:
 
             cast, _ = i.score(self.vtr)
 
@@ -71,6 +71,13 @@ class Election:
             wcnt, vcnt = i.score(self.vtr)
 
             print("candidate {} received {} votes from {} voters".format(i.cid, wcnt, vcnt))
+
+    def total_wt(self):
+        s = 0
+        for i in self.vtr:
+            s += i.wt
+
+        return s
 
 
 class Defender:
@@ -185,8 +192,3 @@ class Attacker:
         else:
             print("Infeasible to attack")'''
         return result
-
-
-
-
-
