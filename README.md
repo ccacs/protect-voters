@@ -1,1 +1,12 @@
 # protect-voters
+
+# Protect-Voters
+
+- You may change the parameters which are located in Datageneration.py
+- Run the main.py
+
+This code is made for the paper "On the attack-tolerance of defensive actions against voter-deletion attacks: hardness and algorithm" submitted for AAAI2023.
+
+![alt text](https://github.com/nikhoj/Protecct-Voters/blob/main/CPP1_n35_m4.png)
+
+![alt text](https://github.com/nikhoj/Protecct-Voters/blob/main/DPP1_n25_m2.png)
