@@ -1,7 +1,5 @@
 # protect-voters
 
-# Protect-Voters
-
 - You may change the parameters which are located in Datageneration.py
 - Run the main.py
 
