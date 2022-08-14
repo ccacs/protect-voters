@@ -1,6 +1,7 @@
 # protect-voters
 
-- You may change the parameters which are located in Datageneration.py
+- To change the parameters which are located in Datageneration.py
+- In the main.py the only argument is prob which is mainly for which model you would like to run. It can be either "CPP" or "DPP".
 - Run the main.py
 
 This code is made for the paper "On the attack-tolerance of defensive actions against voter-deletion attacks: hardness and algorithm" submitted for AAAI2023.
